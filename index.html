@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار الديني - سايبر بنك</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1901621.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #0ff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0ff;
+        }
+        button {
+            background: #0ff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            box-shadow: 0 0 20px #0ff;
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function startQuiz() {
+            window.location.href = 'quiz.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبًا بك في اختبار سايبر بنك الديني</h1>
+        <p>اختبار ديني بأسلوب سايبر بنك، لديك دقيقة ونصف فقط!</p>
+        <button onclick="startQuiz()">ابدأ الاختبار</button>
+    </div>
+</body>
+</html>

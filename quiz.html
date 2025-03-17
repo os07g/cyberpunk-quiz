@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار</title>
+    <script>
+        let questions = [
+            {q: "ما هو أول شيء خلقه الله؟", a: "القلم", options: ["القلم", "العرش", "الملائكة", "الماء"]},
+            {q: "كم عدد أركان الإسلام؟", a: "خمسة", options: ["ثلاثة", "خمسة", "سبعة", "أربعة"]},
+            {q: "ما هو اسم والدة النبي محمد؟", a: "آمنة بنت وهب", options: ["عائشة", "آمنة بنت وهب", "فاطمة", "حفصة"]}
+        ];
+        let index = 0;
+        let score = 0;
+        function loadQuestion() {
+            if (index >= questions.length) {
+                localStorage.setItem('score', score);
+                window.location.href = 'result.html';
+                return;
+            }
+            document.getElementById("question").innerText = questions[index].q;
+            let options = document.getElementById("options");
+            options.innerHTML = "";
+            questions[index].options.forEach(option => {
+                options.innerHTML += `<button onclick="checkAnswer('${option}')">${option}</button><br>`;
+            });
+        }
+        function checkAnswer(answer) {
+            if (answer === questions[index].a) score++;
+            index++;
+            loadQuestion();
+        }
+    </script>
+</head>
+<body onload="loadQuestion()">
+    <h1>اختبار ديني</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+</body>
+</html>
