@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -56,6 +57,85 @@
         <h1>مرحبًا بك في اختبار سايبر بنك الديني</h1>
         <p>اختبار ديني بأسلوب سايبر بنك، لديك دقيقة ونصف فقط!</p>
         <button onclick="startQuiz()">ابدأ الاختبار</button>
+    </div>
+</body>
+</html>
+
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: black;
+            color: #0ff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0ff;
+            width: 50%;
+        }
+        button {
+            background: #0ff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+    </style>
+    <script>
+        let questions = [
+            {q: "ما هو أول شيء خلقه الله؟", a: "القلم", options: ["القلم", "العرش", "الملائكة", "الماء"]},
+            {q: "كم عدد أركان الإسلام؟", a: "خمسة", options: ["ثلاثة", "خمسة", "سبعة", "أربعة"]},
+            {q: "ما هو اسم والدة النبي محمد؟", a: "آمنة بنت وهب", options: ["عائشة", "آمنة بنت وهب", "فاطمة", "حفصة"]},
+            {q: "ما هو الكتاب السماوي الذي أنزل على النبي عيسى؟", a: "الإنجيل", options: ["القرآن", "التوراة", "الإنجيل", "الزبور"]},
+            {q: "ما هو اسم أول مسجد في الإسلام؟", a: "مسجد قباء", options: ["المسجد النبوي", "مسجد قباء", "المسجد الأقصى", "المسجد الحرام"]}
+        ];
+        let index = 0;
+        let score = 0;
+        function loadQuestion() {
+            if (index >= questions.length) {
+                localStorage.setItem('score', score);
+                window.location.href = 'result.html';
+                return;
+            }
+            document.getElementById("question").innerText = questions[index].q;
+            let options = document.getElementById("options");
+            options.innerHTML = "";
+            questions[index].options.forEach(option => {
+                options.innerHTML += `<button onclick="checkAnswer('${option}')">${option}</button>`;
+            });
+        }
+        function checkAnswer(answer) {
+            if (answer === questions[index].a) score++;
+            index++;
+            loadQuestion();
+        }
+    </script>
+</head>
+<body onload="loadQuestion()">
+    <div class="quiz-container">
+        <h1>اختبار ديني</h1>
+        <div id="question"></div>
+        <div id="options"></div>
     </div>
 </body>
 </html>
