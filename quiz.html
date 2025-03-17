@@ -1,14 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار الديني - سايبر بنك</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1901621.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #0ff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0ff;
+        }
+        button {
+            background: #0ff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            box-shadow: 0 0 20px #0ff;
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function startQuiz() {
+            window.location.href = 'quiz.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبًا بك في اختبار سايبر بنك الديني</h1>
+        <p>اختبار ديني بأسلوب سايبر بنك، لديك دقيقة ونصف فقط!</p>
+        <button onclick="startQuiz()">ابدأ الاختبار</button>
+    </div>
+</body>
+</html>
+
+<!-- quiz.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الاختبار</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: black;
+            color: #0ff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0ff;
+            width: 50%;
+        }
+        button {
+            background: #0ff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+    </style>
     <script>
         let questions = [
             {q: "ما هو أول شيء خلقه الله؟", a: "القلم", options: ["القلم", "العرش", "الملائكة", "الماء"]},
             {q: "كم عدد أركان الإسلام؟", a: "خمسة", options: ["ثلاثة", "خمسة", "سبعة", "أربعة"]},
-            {q: "ما هو اسم والدة النبي محمد؟", a: "آمنة بنت وهب", options: ["عائشة", "آمنة بنت وهب", "فاطمة", "حفصة"]}
+            {q: "ما هو اسم والدة النبي محمد؟", a: "آمنة بنت وهب", options: ["عائشة", "آمنة بنت وهب", "فاطمة", "حفصة"]},
+            {q: "ما هو الكتاب السماوي الذي أنزل على النبي عيسى؟", a: "الإنجيل", options: ["القرآن", "التوراة", "الإنجيل", "الزبور"]},
+            {q: "ما هو اسم أول مسجد في الإسلام؟", a: "مسجد قباء", options: ["المسجد النبوي", "مسجد قباء", "المسجد الأقصى", "المسجد الحرام"]}
         ];
         let index = 0;
         let score = 0;
@@ -22,7 +121,7 @@
             let options = document.getElementById("options");
             options.innerHTML = "";
             questions[index].options.forEach(option => {
-                options.innerHTML += `<button onclick="checkAnswer('${option}')">${option}</button><br>`;
+                options.innerHTML += `<button onclick="checkAnswer('${option}')">${option}</button>`;
             });
         }
         function checkAnswer(answer) {
@@ -33,8 +132,10 @@
     </script>
 </head>
 <body onload="loadQuestion()">
-    <h1>اختبار ديني</h1>
-    <div id="question"></div>
-    <div id="options"></div>
+    <div class="quiz-container">
+        <h1>اختبار ديني</h1>
+        <div id="question"></div>
+        <div id="options"></div>
+    </div>
 </body>
 </html>
